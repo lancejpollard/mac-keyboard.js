@@ -7,20 +7,23 @@ TODO: specify all the features of the XML file.
 
 ```js
 const fs = require('fs')
-const keyboard = require('@lancejpollard/mac-keyboard.js')
+const toKeyboardXML = require('@lancejpollard/mac-keyboard.js')
 
-const string = keyboard([
-  {
-    standard: keyboard.ANSI,
-    control: true,
-    bindings: [
-      {
-        sequence: [],
-        result: 'e'
-      }
-    ]
-  }
-])
+const string = toKeyboardXML({
+  name: 'MyLang',
+  keyboards: [
+    {
+      standard: toKeyboardXML.ANSI,
+      control: true,
+      bindings: [
+        {
+          sequence: ['e'],
+          result: 'e'
+        }
+      ]
+    }
+  ]
+})
 
 fs.writeFileSync('MyLang.keylayout', string)
 ```
